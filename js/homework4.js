@@ -18,8 +18,10 @@
 			else{
 				cal.push(document.getElementById(num).value);
 			
+				if(tempNum!=""&&tempNum!=" "){
+					num2.push(tempNum);
+					}
 				
-				num2.push(tempNum);
 			
 				tempNum="";
 				}
@@ -35,6 +37,16 @@
  function eva2(){
 	 num2.push(tempNum);
 	 num2=num2.valueOf();
+	
+	 if(cal.length>num2.length){
+		 alert("表达式有误");
+		 num2=[];
+		 
+		 cal=[];
+		 tempNum="";
+		  document.getElementById("screen").value = null; 
+		 return ;
+		 }
 	  for(var i=0;i<cal.length;i++){
 		  	
 		 
@@ -101,12 +113,19 @@ for(var w=0;w<cal.length;w++){
 		 }
 	 }
  	
-
-		 document.getElementById("screen").value=num2[(num2.length)-1];
-		 num2=[];
-		 
-		 cal=[];
+		if(! isNaN(num2[(num2.length)-1])){
+			document.getElementById("screen").value=num2[(num2.length)-1];
 		 tempNum=document.getElementById("screen").value;
+			}
+			else{
+				alert("表达式有误");
+			 tempNum="";
+		  document.getElementById("screen").value = null; 
+				}
+		
+		 num2=[];
+		 cal=[];
+		
 		
 	  };
   
@@ -128,7 +147,7 @@ for(var w=0;w<cal.length;w++){
 	
 	var n=Number(value2);
 	if(isNaN(n)){
-		alert("cal.pop();");
+		
 		cal.pop();
 		}
 		else{
