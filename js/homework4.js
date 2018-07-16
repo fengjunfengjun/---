@@ -2,23 +2,34 @@
  var cal=new Array();
  var tempNum="";
  
- 
+ function jianfa(number1,number2){
+	 return (number1*1000-number2*1000)/1000;
+	 }
+function jiafa(number1,number2){
+	 return (number1*1000+number2*1000)/1000;
+	 }
+function shengfa(number1,number2){
+	 return (number1*1000*number2*1000)/(1000*1000);
+	 }
+	 
 		
   function jsq(num) {
      document.getElementById('screen').value += document.getElementById(num).value; 
 	
 	
 	 var n=Number(document.getElementById(num).value);
-	 	if(! isNaN(n)){
+	 	if(! isNaN(n)||document.getElementById(num).value=="."){
 				tempNum+=document.getElementById(num).value;
 				//alert("number");
 				//alert(tempNum);
 				
 			}
 			else{
+				
 				cal.push(document.getElementById(num).value);
 			
 				if(tempNum!=""&&tempNum!=" "){
+					
 					num2.push(tempNum);
 					}
 				
@@ -54,7 +65,7 @@
 						switch(cal[i]){
 							case "*":
 							
-								num2[i+1]=num2[i]*num2[i+1];
+								num2[i+1]=shengfa(num2[i],num2[i+1]);
 								
 								num2[i]="@";
 								
@@ -94,9 +105,9 @@
 for(var w=0;w<cal.length;w++){
 	 
 	 switch(cal[w]){
-		 case "+":
+		 case "+":    
 		 					
-								num2[w+1]=Number(num2[w])+Number(num2[w+1]);
+								num2[w+1]=jiafa(num2[w],num2[w+1]);
 								
 							
 		 break;
@@ -105,7 +116,7 @@ for(var w=0;w<cal.length;w++){
 		 case "-":
 		 
 								
-								num2[w+1]=num2[w]-num2[w+1];
+								num2[w+1]=jianfa(num2[w],num2[w+1]);
 								
 								
 								
